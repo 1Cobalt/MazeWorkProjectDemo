@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ControlBall : MonoBehaviour
 {
-
-
-  private bool isGrounded = true;
+  private bool isGrounded = true; 
   private Rigidbody rb;
   public Transform cameraTransform;
   public Vector3 jump;
@@ -21,39 +19,40 @@ public class ControlBall : MonoBehaviour
 
   void Update() //Not FixedUpdate() since it's very bad working with "GetButtonDown"
   {
-        MovementLogic();
+     MovementLogic();
   }
     
 
   private void MovementLogic()
   {
-        //player move
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+     //player move
+     float horizontal = Input.GetAxis("Horizontal");
+     float vertical = Input.GetAxis("Vertical");
 
-        //camera moving with player and normalising, so when you press "W" - player will go forward to the camera view
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-        }
+     //camera moving with player and normalising, so when you press "W" - player will go forward to the camera view
+     Vector3 forward = cameraTransform.forward;
+     Vector3 right = cameraTransform.right;
+     if (Input.GetButtonDown("Jump") && isGrounded)
+     {
+         rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+     }
 
-        forward.y = 0f;
-        right.y = 0f;
+     forward.y = 0f;
+     right.y = 0f;
 
-
-        forward.Normalize();
-        right.Normalize();
-        Vector3 direction = forward * vertical + right * horizontal;
-        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+     //normalising
+     forward.Normalize();
+     right.Normalize();
+     
+     Vector3 direction = forward * vertical + right * horizontal;
+     rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
   }
     void OnCollisionStay()
     {
-        isGrounded = true;
+     isGrounded = true;
     }
     void OnCollisionExit()
     {
-        isGrounded = false;
+     isGrounded = false;
     }
 }

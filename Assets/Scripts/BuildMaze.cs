@@ -6,6 +6,7 @@ using System;
 
 public class BuildMaze : MonoBehaviour
 {
+  
   private static float size = 2f;
   private int _wall = -1;
   private int _empty = 0;
@@ -375,7 +376,6 @@ public class BuildMaze : MonoBehaviour
     Init();
     player.GetComponent<ControlBall>().GetComponent<Rigidbody>().velocity = Vector3.zero;
     Build();
-    Debug.Log("rerun");
     finish.GetComponent<Timer>().Init();
   }
 }

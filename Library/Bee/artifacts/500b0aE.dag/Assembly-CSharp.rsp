@@ -345,7 +345,6 @@
 "Assets/Scripts/ControlBall.cs"
 "Assets/Scripts/CrashScript.cs"
 "Assets/Scripts/EnemyBehaviour.cs"
-"Assets/Scripts/GameController.cs"
 "Assets/Scripts/KeyCollect.cs"
 "Assets/Scripts/Timer.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

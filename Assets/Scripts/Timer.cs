@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+  //Timer is a script, that attached to finish zone.
+  //Mostly this script is needed for timer
   public Text time, bestTime;
   private int timeLimit = 300000; //5 minutes in miliseconds
   private TimeSpan ts;
@@ -11,6 +13,7 @@ public class Timer : MonoBehaviour
   private float startTime;
   private bool isWork;
   public bool finishIsAvailable = false;
+  public AudioSource finishSound;
 
   public GameObject player, textStart, textFinish, textTimeIsOver;
 
@@ -21,6 +24,7 @@ public class Timer : MonoBehaviour
 
   public void Init()
   {
+      //Initialising timer work
       isWork = true;
 
       curr = "00:00:00";
@@ -61,10 +65,11 @@ public class Timer : MonoBehaviour
 
 
 
-  private void OnTriggerEnter(Collider other) //Timer is a script, that attached to finish zone
+  private void OnTriggerEnter(Collider other) 
   {
         if (other.tag == "Player" && finishIsAvailable)
         {
+            finishSound.Play();
             player.SetActive(false);
             player.GetComponent<ControlBall>().GetComponent<Rigidbody>().velocity = Vector3.zero;
             textStart.SetActive(true);

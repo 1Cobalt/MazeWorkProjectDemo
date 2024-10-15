@@ -23,7 +23,7 @@ public class CameraHandle : MonoBehaviour
 
         yaw += mouseX;
         pitch -= mouseY;
-        pitch = Mathf.Clamp(pitch, -90f, 90f); //vertical limiter
+        pitch = Mathf.Clamp(pitch, -90f, 90f); //vertical limiter (TODO: seems like it's working strangely, need to fix)
 
         Vector3 direction = new Vector3(0, 0, -distanceFromPlayer);
         Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
